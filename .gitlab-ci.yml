@@ -1,0 +1,36 @@
+stages:
+  - dev
+
+variables:
+  DOCKER_DRIVER: overlay2
+  APP_NAME: pgold-api
+  VERSION: "v1.0.${CI_COMMIT_SHORT_SHA}"
+  
+
+before_script:
+  - id
+  - docker info
+  - docker --version
+
+
+
+deploy_dev:
+  stage: dev
+  variables:
+    IMAGE_TAG: $APP_NAME:dev-${VERSION}
+    INFISICAL_API_URL: $INFISICAL_API_URL
+    INFISICAL_SERVICE_TOKEN: $DEV_INFISICAL_SERVICE_TOKEN
+  script:
+    - echo "Logging into Docker for dev environment..."
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - echo "Building Docker image for dev environment..."
+    - docker compose -f docker-compose.dev.yml down
+    - echo "Deploying to dev on port 8999"
+    - docker compose -f docker-compose.dev.yml up -d --build 
+    - echo "Cleaning up unused Docker containers and images..."
+    - docker container prune -f
+    - docker image prune -af
+  tags:
+    - dev-runner-u30
+  only:
+    - dev  # Run Only on the dev branch

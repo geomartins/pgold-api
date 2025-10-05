@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  app:
+    restart: always
+    image: ${IMAGE_TAG}
+    container_name: "pgold-api-dev-container"
+    build:
+      context: .
+      args:
+        - ENVIRONMENT=dev
+    ports:
+      - "8999:80"
+    environment:
+      INFISICAL_ENV: dev
+      INFISICAL_API_URL: ${INFISICAL_API_URL}
+      INFISICAL_SERVICE_TOKEN: ${INFISICAL_SERVICE_TOKEN}
+    
+    volumes:
+      - pgold-api-dev-storage-data:/var/www/html/storage
+      - /home/devops/logs/pgold-api:/var/www/html/storage/logs ## Very important
+    
+volumes:
+  pgold-api-dev-storage-data:

@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  app:
+    restart: always
+    image: pgold-api:local-v1.0.0
+    container_name: "pgold-api-local-container"
+    build:
+      context: .
+      args:
+        - ENVIRONMENT=local
+    ports:
+      - "8999:80"
+    environment:
+      INFISICAL_ENV: local
+      INFISICAL_API_URL: http://10.200.0.33:3333/api
+      INFISICAL_SERVICE_TOKEN: st.92719fbb-6092-4dc7-a669-af2b60e8b92b.129fd0d80645dab75aaea2bc91404ba3.c154990d2a9b868774535e697b45ab05
+      
+    volumes:
+      - ./config:/var/www/html/config
+      - ./storage:/var/www/html/storage
+      - ./database:/var/www/html/database
+      - ./app:/var/www/html/app
+      - ./Modules:/var/www/html/Modules
+      - ./resources:/var/www/html/resources
+      - ./routes:/var/www/html/routes
