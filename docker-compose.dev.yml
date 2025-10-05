@@ -14,6 +14,7 @@ services:
       INFISICAL_ENV: dev
       INFISICAL_API_URL: ${INFISICAL_API_URL}
       INFISICAL_SERVICE_TOKEN: ${INFISICAL_SERVICE_TOKEN}
+      
     
     volumes:
       - pgold-api-dev-storage-data:/var/www/html/storage
