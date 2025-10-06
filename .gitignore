@@ -15,4 +15,4 @@ yarn-error.log
 /*.log
 /storage/logs/*
 /database/sqlite/database.sqlite
-
+.env
