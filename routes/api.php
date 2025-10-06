@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/test-db', function () {
+    try {
+        DB::connection()->getPdo();
+        return 'Database connected successfully!';
+    } catch (\Exception $e) {
+        return 'Database connection failed: ' . $e->getMessage();
+    }
+});

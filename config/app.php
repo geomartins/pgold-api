@@ -17,6 +17,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'sandbox_base_url' => env('SANDBOX_BASE_URL', ''),
 
     /*
     |--------------------------------------------------------------------------
