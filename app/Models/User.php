@@ -26,6 +26,9 @@ class User extends Authenticatable
         'referral_source',
         'mac_address',
         'password',
+        'country_code',
+        'country_iso_code',
+        'country_code'
     ];
 
 

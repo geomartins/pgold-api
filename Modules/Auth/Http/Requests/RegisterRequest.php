@@ -3,7 +3,6 @@
 namespace Modules\Auth\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
@@ -25,12 +24,23 @@ class RegisterRequest extends FormRequest
                 'max:20',
                 'regex:/^\d+$/', // Only digits allowed
             ],
-            
             'email' => 'required|email|unique:users,email',
             'referral' => 'nullable|string|max:100',
-            'referral_source' => 'required|string|max:255',
+            'referral_source' => 'nullable|string|max:255',
             'password' => 'required|string|min:6|confirmed',
-            'mac_address' => 'required|string|max:255'
+            'mac_address' => 'required|string|max:255',
+            'country_code' => [
+                'required',
+                'string',
+                'max:5', 
+                'regex:/^\+?\d+$/',
+            ],
+            'country_iso_code' => [
+                'required',
+                'string',
+                'size:2',
+                'regex:/^[A-Z]{2}$/',
+            ],
         ];
     }
 
@@ -43,7 +53,6 @@ class RegisterRequest extends FormRequest
     {
         return true;
     }
-
 
     protected function failedValidation(Validator $validator)
     {
