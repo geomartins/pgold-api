@@ -63,9 +63,7 @@ fi
 
 
 ##### Step 7: Migrate 
-# php artisan migrate --force
-
-
+php artisan migrate --force
 
 
 ### Step 8: Create Laravel Passport key if not exist and if using Passport
