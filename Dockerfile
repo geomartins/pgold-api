@@ -64,10 +64,6 @@ RUN echo "memory_limit=-1" > /usr/local/etc/php/conf.d/memory.ini && \
     curl -o /etc/ssl/certs/cacert.pem https://curl.se/ca/cacert.pem
 
 
-# Install Infisical CLI
-RUN curl -1sLf 'https://artifacts-cli.infisical.com/setup.deb.sh' | bash \
- && apt-get update && apt-get install -y infisical
-
 # Copy Laravel source
 COPY --chown=www-data:www-data . /var/www/html
 
@@ -76,8 +72,6 @@ WORKDIR /var/www/html
 # Git safe dir
 RUN git config --global --add safe.directory /var/www/html
 
-# Remove default .env (Infisical will inject it)
-RUN rm -f .env
 
 # Install Laravel dependencies
 RUN composer install --no-dev --optimize-autoloader

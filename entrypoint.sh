@@ -1,16 +1,6 @@
 #!/bin/sh
 set -e
 
-### Step 1: Export .env from Infisical
-echo "📋 Exporting Infisical secrets into .env..."
-infisical export \
-  --env "$INFISICAL_ENV" \
-  --format dotenv \
-  --token "$INFISICAL_SERVICE_TOKEN" \
-  --domain "$INFISICAL_API_URL" \
-  > /var/www/html/.env
-echo "✅ Secrets exported. Ensuring storage directories exist and permissions are set..."
-
 
 ### Step 2: Make Directories if not exist
 mkdir -p \
@@ -90,10 +80,6 @@ else
   echo "ℹ️ Laravel Passport not detected. Skipping passport:keys."
 fi
 
-
-
-###### Step 9: Restart Laravel Queue
-php artisan queue:restart || true
 
 
 
