@@ -63,7 +63,7 @@ fi
 
 
 ##### Step 7: Migrate 
-php artisan migrate --force
+# php artisan migrate --force
 
 
 
