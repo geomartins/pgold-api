@@ -83,8 +83,8 @@ fi
 
 #### Step 10: Set Storage directory permission to www-data
 echo "🔧 Re-applying permissions to fix any root-owned cache files..."
-chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database/sqlite
+chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database/sqlite
 
 #### Step 11: Call Supervisord.conf
 exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
