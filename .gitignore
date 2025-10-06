@@ -18,4 +18,5 @@ yarn-error.log
 /config/logging.php
 /config/database.php
 /storage/logs/*
+/database/sqlite
 

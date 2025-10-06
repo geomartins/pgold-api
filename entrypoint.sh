@@ -31,6 +31,22 @@ if [ ! -L "public/storage" ]; then
   php artisan storage:link
 fi
 
+### Step 1.5: Setup SQLite database
+echo "🗃️ Configuring SQLite database..."
+mkdir -p /var/www/html/database/sqlite
+
+SQLITE_PATH="/var/www/html/database/sqlite/database.sqlite"
+
+# Create SQLite file if it doesn't exist (volume will persist it)
+if [ ! -f "$SQLITE_PATH" ]; then
+  touch "$SQLITE_PATH"
+  chown www-data:www-data "$SQLITE_PATH"
+  chmod 664 "$SQLITE_PATH"
+  echo "✅ Created new SQLite database file at $SQLITE_PATH"
+else
+  echo "ℹ️ Existing SQLite database found at $SQLITE_PATH"
+fi
+
 ##### Step 5: Clearing Laravel cache
 echo "✅ Clearing Laravel cache..."
 php artisan config:clear

@@ -18,7 +18,10 @@ services:
     
     volumes:
       - pgold-api-dev-storage-data:/var/www/html/storage
+      - pgold-api-dev-sqlite-data:/var/www/html/database/sqlite
       - /home/devops/logs/pgold-api:/var/www/html/storage/logs ## Very important
+
     
 volumes:
   pgold-api-dev-storage-data:
+  pgold-api-dev-sqlite-data:
