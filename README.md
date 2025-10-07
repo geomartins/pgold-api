@@ -97,7 +97,7 @@ php artisan migrate
 ### 6️⃣ Run with Docker (Optional)
 
 ```bash
-docker compose up -d
+docker-compose -f docker-compose.local.yml up -d --build
 ```
 
 ---
