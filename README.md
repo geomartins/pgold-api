@@ -5,6 +5,13 @@ It follows a **modular architecture**, allowing each domain feature to exist ind
 
 ---
 
+
+## 📦 Postman Collection
+You can test all endpoints using the Postman collection:
+- import manually: `/PGold_API.postman_collection.json`
+- The api is accessible on a public facing url within 5days... After which it would be removed
+
+
 ## 🧩 Project Structure
 
 The project uses **Laravel Modules** (via `nwidart/laravel-modules`) to separate core features.
