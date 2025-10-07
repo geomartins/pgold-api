@@ -7,9 +7,14 @@ It follows a **modular architecture**, allowing each domain feature to exist ind
 
 
 ## 📦 Postman Collection
-You can test all endpoints using the Postman collection:
-- import manually: `/PGold_API.postman_collection.json`
-- The api is accessible on a public facing url within 5days... After which it would be removed
+You can test all endpoints using the Postman collection below:
+
+👉 [Download PGold_API.postman_collection.json](./PGold_API.postman_collection.json)
+
+To import:
+1. Open Postman → File → Import
+2. Select the downloaded file.
+3. You’ll see collections for **Auth** and **Rates**.
 
 
 ## 🧩 Project Structure
